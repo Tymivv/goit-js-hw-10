@@ -15,14 +15,16 @@ const serchCountries = e => {
         const name = searchBox.value.trim();
         return fetchCountries(name).then(showCountries).catch(error);
     } else {
-        countryList.innerHTML = '';
-        countryInfo.innerHTML = '';
+        cleaning ('', '');
     }
-    };
-
+};
+    
+function cleaning (oneHTML, twoHTML) {
+  countryList.innerHTML = oneHTML;
+  countryInfo.innerHTM = twoHTML;
+}
 function showCountries(data) {
-    countryList.innerHTML = '';
-    countryInfo.innerHTML = '';
+    cleaning('', '');;
     if (data.length > 10) {
     return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     } else if (data.length >= 2 && data.length <= 10) {
