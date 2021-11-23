@@ -8,7 +8,8 @@ const countryInfo = document.querySelector('.country-info');
 const countryList= document.querySelector('.country-list');
 const DEBOUNCE_DELAY = 300;
 
-searchBox.addEventListener('input', debounce(e => {
+
+const serchCountries = e => {
     e.preventDefault();
     if (searchBox.value) {
         const name = searchBox.value.trim();
@@ -17,8 +18,7 @@ searchBox.addEventListener('input', debounce(e => {
         countryList.innerHTML = '';
         countryInfo.innerHTML = '';
     }
-    }, DEBOUNCE_DELAY),
-);
+    };
 
 function showCountries(data) {
     countryList.innerHTML = '';
@@ -57,3 +57,4 @@ function error() {
     return Notiflix.Notify.failure('Oops, there is no country with that name');
 }
 
+searchBox.addEventListener('input', debounce(serchCountries, DEBOUNCE_DELAY));
